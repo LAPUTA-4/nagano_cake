@@ -15,24 +15,24 @@ scope module: :public do
     get "/about" =>"homes#about"
 
     #商品
-    resources :items, only[:index, :show]
+    resources :items, only: [:index, :show]
 
     #会員
-    resources :customers, only[:show, :edit, :update] do
+    resources :customers, only: [:show, :edit, :update] do
        collection do
            get 'unsubscribe'
            get 'withdraw'
        end
     end
     #カート
-    resources :cart_items, only[:index, :update, :destroy, :create] do
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
         collection do
             delete 'destroy_all'
         end
     end
 
     #注文
-    resources :orders, only[:new, :create, :index, :show] do
+    resources :orders, only: [:new, :create, :index, :show] do
         collection do
             post 'confirm'
             get 'complete'
@@ -40,17 +40,17 @@ scope module: :public do
     end
 
     #配送先
-    resources :addresses, except[:new, :show]
+    resources :addresses, except: [:new, :show]
 end
 
 #アドミン側(namespceで/admin/がつくようになる)
 namespace :admin do
     root :to => "homes#top"
-    resources :items, except[:destroy]
-    resources :genres, only[:index, :edit, :create, :update]
-    resources :customers, only[:index, :show, :edit, :update]
-    resources :orders, only[:show, :update]
-    resources :order_details, only[:update]
+    resources :items, except: [:destroy]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
