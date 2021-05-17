@@ -5,7 +5,7 @@ devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/sessions'
   }
 devise_for :customers, path:'customers', controllers: {
-    sessions: 'public/registrations',
+    sessions: 'public/sessions',
     registrations: 'public/registrations'
 }
     #パブリック側(scopemoduleでパブリックフォルダを参照しつつURLは変えない)
