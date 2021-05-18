@@ -2,7 +2,7 @@
     <h3>マイページ</h3><br>
     <div class="mb-3 d-flex align-items-center">
     <h4 class="mr-3">登録情報　</h4>
-    <%= link_to "編集する", root_path, class: "btn btn-success font-weight-bold" %>
+    <%= link_to "編集する", customers_edit_path, class: "btn btn-success font-weight-bold" %>
     </div>
     <table class="table table-bordered w-75 mb-5">
         <tr>
@@ -27,9 +27,9 @@
         </tr>
     </table>
     <div class="mb-3 d-flex align-items-center">
-        <h4 class="mr-3">配送先　　</h4><%= link_to "配送先一覧", root_path, class: "btn btn-primary font-weight-bold" %>
+        <h4 class="mr-3">配送先　　</h4><%= link_to "配送先一覧", orders_path, class: "btn btn-primary font-weight-bold" %>
     </div>
     <div class="mb-3 d-flex align-items-center">
-        <h4 class="mr-3">注文履歴　</h4><%= link_to "注文履歴一覧", root_path, class: "btn btn-primary font-weight-bold" %>
+        <h4 class="mr-3">注文履歴　</h4><%= link_to "注文履歴一覧", addresses_path, class: "btn btn-primary font-weight-bold" %>
     </div>
 </div>

@@ -18,13 +18,12 @@ scope module: :public do
     resources :items, only: [:index, :show]
 
     #会員
-    resources :customers, only: [:edit, :update] do
-       collection do
-           get '/my_page' => 'customers#show'
-           get 'unsubscribe'
-           get 'withdraw'
-       end
-    end
+    get '/customers/my_page' => 'customers#show', as: :my_page_customers
+    get '/customers/edit' => 'customers#edit', as: :customers_edit
+    patch '/customers' => 'customers#update', as: :customers_update
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    get '/customers/withdraw' => 'customers#withdraw'
+           
     #カート
     resources :cart_items, only: [:index, :update, :destroy, :create] do
         collection do
