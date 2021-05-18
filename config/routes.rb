@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 #only等は未着手resourcesで大体のアクションができるか確認
 #deviseの設定
-
 devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/sessions'
   }
 devise_for :customers, path:'customers', controllers: {
-    sessions: 'public/registrations',
+    sessions: 'public/sessions',
     registrations: 'public/registrations'
 }
     #パブリック側(scopemoduleでパブリックフォルダを参照しつつURLは変えない)
@@ -19,8 +18,9 @@ scope module: :public do
     resources :items, only: [:index, :show]
 
     #会員
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, only: [:edit, :update] do
        collection do
+           get '/my_page' => 'customers#show'
            get 'unsubscribe'
            get 'withdraw'
        end
