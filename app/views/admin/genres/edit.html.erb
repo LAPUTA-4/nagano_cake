@@ -1,2 +1,10 @@
 <h1>Admin::Genres#edit</h1>
 <p>Find me in app/views/admin/genres/edit.html.erb</p>
+
+<%= form_with model:@genre, url: admin_genre_path, local:true do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_area :name, class: "form-control introduction" %>
+  <%= f.submit class: 'btn btn-secondary' %>
+
+<% end %>
