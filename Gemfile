@@ -69,7 +69,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 
-gem 'refile'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'devise'
 gem 'pry-rails'
 gem 'pry-byebug'
@@ -80,3 +80,9 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'rubocop'
 gem 'enum_help'
+
+
+
+
+
+
