@@ -11,18 +11,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     if Item.create(item_params)
-      flash[:notice] = "successfully!"
       redirect_to root_path
     else
-      flash[:notice] = "can't be blank"
       redirect_to admin_items_path
     end
   end
   
-  
-  
-  
-
   def show
   end
 
@@ -35,7 +29,7 @@ class Admin::ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active)
+    params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active, :image)
   end
   
 end
