@@ -18,8 +18,9 @@ scope module: :public do
     resources :items, only: [:index, :show]
 
     #会員
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, only: [:edit, :update] do
        collection do
+           get '/my_page' => 'customers#show'
            get 'unsubscribe'
            get 'withdraw'
        end
