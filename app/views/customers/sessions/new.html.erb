@@ -1,26 +1,22 @@
-<div class="container m-5">
-  <div class="row mx-auto">
-    <div class="col-8  mx-auto">
-      <h3>ログイン</h3><br>
-        <h4>会員の方はこちらからログイン</h4><br>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <table class="table">
-              <tr>
-                <th class="text-center">メールアドレス</th>
-                <th colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-75 form-control" %></th>
-              </tr>
-              <tr>
-                <th class="text-center">パスワード</th>
-                <th colspan="2"><%= f.password_field :password, autocomplete: "current-password", class: "w-75 form-control" %></th>
-              </tr>
-              <tr>
-                <th></th>
-                <th><%= f.submit "ログイン", class: "btn btn-primary w-50"  %></th>
-              </tr>
-            </table>
-      <% end %>
-      <h4>会員登録がお済でない方</h4><br>
-        <%= link_to "こちら", new_customer_registration_path %>から新規登録をおこなってください
-    </div>
-  </div>
+<div class="col-8 mx-auto">
+  <h3>ログイン</h3><br>
+  <h5>会員の方はこちらからログイン</h5><br>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="table">
+        <tr>
+          <th class="text-center">メールアドレス</th>
+          <th colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-75 form-control" %></th>
+        </tr>
+        <tr>
+          <th class="text-center">パスワード</th>
+          <th colspan="2"><%= f.password_field :password, autocomplete: "current-password", class: "w-75 form-control" %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= f.submit "ログイン", class: "btn btn-primary w-50"  %></th>
+        </tr>
+      </table>
+    <% end %>
+  <h5>会員登録がお済でない方</h5><br>
+  <%= link_to "こちら", new_customer_registration_path %>から新規登録をおこなってください
 </div>
