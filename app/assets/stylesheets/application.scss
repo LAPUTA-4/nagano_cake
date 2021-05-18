@@ -17,3 +17,40 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+//* ================ リセットCSS ============================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//* ================ Top ====================================
+
+.top-image {
+   background-image: url(top.jpg);
+   background-size: cover;
+   background-position: center;
+   height: 200%;
+   width: 100%;background-position: center;
+}
+
+.top-image-text {
+    margin: 0 auto;
+    width: 50%;
+    height: 80%;
+    padding-top: 20%;
+    font-size: 150%;
+    color: white;
+}
+
+.top-items {
+    color: white;
+}
+
+//* ================ About ====================================
+
+.about-text {
+  text-align: center;
+}
