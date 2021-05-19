@@ -26,10 +26,10 @@
             <th colspan="2"><%= @customer.email %></th>
         </tr>
     </table>
-    <div class="mb-3 d-flex align-items-center">
-        <h4 class="mr-3">配送先　　</h4><%= link_to "配送先一覧", orders_path, class: "btn btn-primary font-weight-bold" %>
+    <div class="mb-3 d-flex align-items-center"> 
+        <h4 class="mr-3">配送先　　</h4><%= link_to "配送先一覧", addresses_path, class: "btn btn-primary font-weight-bold" %>
     </div>
     <div class="mb-3 d-flex align-items-center">
-        <h4 class="mr-3">注文履歴　</h4><%= link_to "注文履歴一覧", addresses_path, class: "btn btn-primary font-weight-bold" %>
+        <h4 class="mr-3">注文履歴　</h4><%= link_to "注文履歴一覧", orders_path,class: "btn btn-primary font-weight-bold" %>
     </div>
 </div>
