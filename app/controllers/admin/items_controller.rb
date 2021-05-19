@@ -2,6 +2,7 @@ class Admin::ItemsController < ApplicationController
   protect_from_forgery #createアクションのsaveメソッドがRailsのCSRF対策のために通らなくなる。 追記するとなぜか通る？
   
   def index
+    @items = Item.page(params[:page]).per(10)
   end
 
   def new
