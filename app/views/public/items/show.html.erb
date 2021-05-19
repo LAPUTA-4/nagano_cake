@@ -1,2 +1,6 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+            <div class="col-10 mx-auto">
+                <div><%= attachment_image_tag @item, :image, :fill, 160, 120, format: 'jpeg' %></div>
+                <div class="py-2"><%= @item.name %></div>
+                <div class="py-2"><%= @item.introduction %></div>
+                <div class="pb-1">￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></div>
+            </div>
