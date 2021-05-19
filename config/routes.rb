@@ -26,7 +26,7 @@ scope module: :public do
     get '/customers/edit' => 'customers#edit', as: :customers_edit
     patch '/customers' => 'customers#update', as: :customers_update
     get '/customers/unsubscribe' => 'customers#unsubscribe'
-    get '/customers/withdraw' => 'customers#withdraw'
+    patch '/customers/withdraw' => 'customers#withdraw'
            
     #カート
     resources :cart_items, only: [:index, :update, :destroy, :create] do
