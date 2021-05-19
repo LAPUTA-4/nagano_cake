@@ -11,9 +11,11 @@ class Admin::ItemsController < ApplicationController
 
   def create
     if Item.create(item_params)
-      redirect_to root_path
-    else
+      flash[:notice] = "success"
       redirect_to admin_items_path
+    else
+      flash[:notice] = "エラーが発生しました"
+      redirect_to new_admin_item_path
     end
   end
   
