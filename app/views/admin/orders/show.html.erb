@@ -21,7 +21,7 @@
       <tr>
         <%= form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %>
         <th>注文ステータス</th>
-        <th><%= f.collection_select :status, @order, :id, :name %></th>
+        <th><%= f.select :status, Order.statuses.keys.to_a, {} %></th>
         <th><%= f.submit class: 'btn btn-success' %></th>
         <% end %>
       </tr>
