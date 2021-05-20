@@ -17,12 +17,16 @@ class Public::CartItemsController < ApplicationController
 
   def create
     CartItem.create(item_params)
+    if @cart_item = CartItem.create(cart_item_params)
+      redirect_to cart_items_path
+    else
+      redirect_to request.referer
+    end
   end
   
   private
   
-  def item_params
-    params.require(:item).permit(:item_id, :amount) 
+  def cart_item_params
+    params.require(:cart_item).permit(:customer_id, :item_id, :amount)
   end
-  
 end
