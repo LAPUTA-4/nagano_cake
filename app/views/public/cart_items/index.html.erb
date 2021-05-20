@@ -28,15 +28,16 @@
             </td>
             <td class="text-left">
                <%= item.amount %>
+               　<%= form_with model: item, url: cart_item_path(item), method: :patch, local: true do |f| %>
+                   <%= f.select :amount, [*(1..10)],{ include_blank: "個数"},{ class: "col-3 custom-select"} %>
+                   <%= f.submit "変更", class: "btn btn-success" %>
+                 <% end %>
             </td>
             <td class="text-left">
-            <%= item.item.price * item.amount %>
-              
-            
-              
+             <%= item.item.price * item.amount %>
             </td>
             <td class="col-xs-2">
-              <%= link_to "削除", cart_item_path(item.id), method: :delete, class: "btn-danger" %>
+              <%= link_to "削除", cart_item_path(item), method: :delete, class: "btn-danger" %>
             </td>
           </tr>
         <% end %>

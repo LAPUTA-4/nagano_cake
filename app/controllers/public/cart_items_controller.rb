@@ -9,9 +9,21 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+      item = CartItem.find(params[:id])
+    if item.update(cart_item_params)
+      redirect_to request.referer
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
+    item = CartItem.find(params[:id])
+    if item.destroy
+      redirect_to request.referer
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy_all
