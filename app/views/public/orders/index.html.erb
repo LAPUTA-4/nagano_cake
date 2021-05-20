@@ -27,8 +27,8 @@
             </td>
             <td class="text-left">
                 <% order.order_details.each do |order_detail| %>
-    		        <%= order_detail.item.name %><br>
-    		    <% end %>
+                  <%= order_detail.item.name %><br>
+                <% end %>
             </td>
             <td class="text-left">
               <%= order.total_payment.to_s(:delimited) %>
