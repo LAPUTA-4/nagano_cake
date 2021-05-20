@@ -6,13 +6,17 @@ class Public::ItemsController < ApplicationController
       @genre = Genre.find_by(:name => params[:name])
        
       # category_idと紐づく投稿を取得
-      @items = @genre.items.all
+      @items = @genre.items.page(params[:page]).per(8)
+      @items_count = @genre.items.all.count
     else
       # 投稿すべてを取得
-      @items = Item.all
+      @items = Item.page(params[:page]).per(8)
     end
+    @genres = Genre.all
   end
 
   def show
+    @item = Item.find(params[:id])
+    @cart_item = CartItem.new
   end
 end
