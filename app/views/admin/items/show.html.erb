@@ -1,2 +1,46 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="col-10 mx-auto">
+      <h2>商品詳細</h2>
+      <br>
+  <div class="d-flex justify-content-l">
+  <div class="col-5"><%= attachment_image_tag @item, :image, :fill, 320, 240, format: 'jpeg' %></div>
+
+  <br>
+      <div class=" col-5 align-self-center font-weight-bold">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>商品名</th>
+              <td><%= @item.name %></td>
+            </tr>
+            <tr>
+              <th>商品説明</th>
+              <td><%= @item.introduction %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @item.genre.name %></td>
+            </tr>
+            <tr>
+              <th>税込価格
+                (税抜き価格) </th>
+                <td><%= (@item.price*1.1).floor.to_s %>(<%= (@item.price).floor.to_s %>)円</td>
+            </tr>
+            <tr>
+              <th>販売ステータス</th>
+              <td>
+              <% if @item.is_active == true%>
+              <font color="lawngreen">販売中</font>
+               <% else %>
+               <font color="lightgray">売りきれ</font>
+               <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+    </div>
+    <div class="text-center">
+          <%= link_to "編集する", edit_admin_item_path(@item),class: " btn btn-success pull-right" %>
+        </div>
+    </div>

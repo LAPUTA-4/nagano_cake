@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   protect_from_forgery #createアクションのsaveメソッドがRailsのCSRF対策のために通らなくなる。 追記するとなぜか通る？
-  
+
   def index
     @items = Item.page(params[:page]).per(10)
   end
@@ -19,8 +19,9 @@ class Admin::ItemsController < ApplicationController
       redirect_to new_admin_item_path
     end
   end
-  
+
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -28,11 +29,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
   end
-  
+
   private
-  
+
   def item_params
     params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active, :image)
   end
-  
+
 end
