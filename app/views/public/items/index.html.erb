@@ -1,2 +1,29 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="col-xl-10 col-sm-12 mx-auto">
+    <div class="my-2">
+    <% if params[:name].nil? %>
+        <h3 class="d-inline-block">全商品一覧</h3>
+        <h5 class="d-inline"> (全<%= Item.all.count %>件)</h5>
+    <% else %>
+        <h3 class="d-inline-block"><%= params[:name] %>一覧</h3>
+        <h5 class="d-inline"> (全<%= @items_count %>件)</h5>
+    <% end %>
+    <div class="text-center my-2">
+    <a href="/items" class="btn btn-outline-secondary text-decoration-none">すべて</a>
+    <% @genres.each do |genre| %>
+    <a href="/items?name=<%= genre.name %>"  class="btn btn-outline-secondary text-decoration-none"><%= genre.name %></a>
+    <% end %>
+    </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-start">
+        <% @items.each do |item| %>
+            <%=link_to item_path(item.id), class: "text-decoration-none text-dark card m-2" do %>
+            <div class="p-3 font-weight-bold mx-auto">
+                <div><%= attachment_image_tag item, :image, :fill, 160, 120, format: 'jpeg' %></div>
+                <div class="py-2"><%= item.name %></div>
+                <div class="pb-1">￥<%= (item.price * 1.1).floor.to_s(:delimited) %></div>
+            </div>
+            <% end %>  
+        <% end %>
+    </div>
+    <div><%= paginate @items %></div>
+</div>

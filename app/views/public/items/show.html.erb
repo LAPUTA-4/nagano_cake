@@ -1,2 +1,16 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+            <div class="col-10 mx-auto">
+                <div class="d-flex justify-content-center">
+                <div class="col-5"><%= attachment_image_tag @item, :image, :fill, 320, 240, format: 'jpeg' %></div>
+                <div class=" col-5 align-self-center font-weight-bold">
+                    <p><%= @item.name %></p>
+                    </p><%= @item.introduction %></p>
+                    </p>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></p>
+                    <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                    <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10],{ include_blank: "個数"},{ class: "col-3 custom-select"} %>
+                    <%= f.submit "カートに入れる", class: "btn btn-success" %>
+                <% end %>
+                </div>
+                </div>
+            </div>
