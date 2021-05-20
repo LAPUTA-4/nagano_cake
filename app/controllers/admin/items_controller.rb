@@ -30,7 +30,6 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    #editで画像保存しようとすると『Refile::InvalidID』エラー
     @item.update(item_params)
     redirect_to admin_item_path
   end
