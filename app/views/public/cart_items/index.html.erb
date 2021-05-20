@@ -1,2 +1,45 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<!-- これが当たりっぽい https://teratail.com/questions/234399 -->
+<!-- f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" -->
+
+
+<h2 class="text-center">ショッピングカート</h2>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart_item.each do |item| %>
+          <tr>
+            <td class="col-xs-1">
+              < item.name %>
+            </td>
+            <td class="text-left">
+                <%= item.price %>
+            </td>
+            <td class="text-left">
+               <!-- ここで数量変更 -->
+            </td>
+            <td class="text-left">
+               <!-- ここで、小計　おそらく、ここにダイレクトで数量との計算をさせる。 -->
+            </td>
+            <td class="col-xs-2">
+              <%= link_to "削除", cart_item_path(item.id), method: :delete, class: "btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% a = 30 %>
+<%= a %>
