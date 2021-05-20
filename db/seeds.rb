@@ -25,5 +25,5 @@ Item.create(name: 'リンゴのロリポップ', genre_id: '4', introduction: '�
 Item.create(name: 'ベリーのプリン', genre_id: '3', introduction: 'おいしいおいしいベリーのプリンです', price: '120', is_active: true, image: File.open('app/assets/images/pudding_1.jpg'))
 Item.create(name: '皿ごとプリン', genre_id: '3', introduction: 'おいしいおいしい皿ごとプリンです(お皿付き)', price: '560', is_active: true, image: File.open('app/assets/images/pudding_2.jpg'))
 CartItem.create(customer_id: '1', item_id: '1', amount: '3')
-Order.create(customer_id: '1', postal_code: '1110000', address: '七石山病院', name: 'キキとメイのお母さん', shipping_cost: '800', total_payment: '2285', payment_method: '0', status: '1')
-OrderDetail.create(order_id: '1', item_id: '1', price: '1350', amount: '3', making_status: '0')
+Order.create(customer_id: '1', postal_code: '1110000', address: '七石山病院', name: 'キキとメイのお母さん', shipping_cost: '800', total_payment: '2285', payment_method: 0, status: 1)
+OrderDetail.create(order_id: '1', item_id: '1', price: '1350', amount: '3', making_status: 0)
