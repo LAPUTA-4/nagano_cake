@@ -1,6 +1,7 @@
 <!-- これが当たりっぽい https://teratail.com/questions/234399 -->
 <!-- f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" -->
 
+<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: " btn btn-success pull-right" %>
 
 <h2 class="text-center">ショッピングカート</h2>
 <div class="container">
@@ -17,19 +18,22 @@
       </thead>
 
       <tbody>
-        <% @cart_item.each do |item| %>
+        <% @cart_items.each do |item| %>
           <tr>
             <td class="col-xs-1">
-              < item.name %>
+              <%= item.item.name %>
             </td>
             <td class="text-left">
-                <%= item.price %>
+                <%= item.item.price %>
             </td>
             <td class="text-left">
-               <!-- ここで数量変更 -->
+               <%= item.amount %>
             </td>
             <td class="text-left">
-               <!-- ここで、小計　おそらく、ここにダイレクトで数量との計算をさせる。 -->
+            <%= item.item.price * item.amount %>
+              
+            
+              
             </td>
             <td class="col-xs-2">
               <%= link_to "削除", cart_item_path(item.id), method: :delete, class: "btn-danger" %>
@@ -41,5 +45,6 @@
   </div>
 </div>
 
-<% a = 30 %>
-<%= a %>
+<p>合計金額 <%= @sum %></p>
+<%= link_to "買い物を続ける", items_path,class: " btn btn-success pull-right" %>
+<%= link_to "情報入力に進む", new_order_path,class: " btn btn-success pull-right" %>
