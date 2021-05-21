@@ -18,8 +18,6 @@ class Admin::OrderDetailsController < ApplicationController
   private
 
   def order_detail_params
-    #params.permit(:making_status,:customer_id, array: [着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3])
-    params.require(:order_detail).permit(:making_status,:customer_id)
-    #params.permit(:making_status, array: [着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3])
+    params.require(:order_detail).permit(:making_status)
   end
 end
