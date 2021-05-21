@@ -1,2 +1,40 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="col-10 mx-auto">
+    <h4 class="font-weight-bold">注文情報入力</h4>
+    <%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
+        <h5 class="font-weight-bold">支払い方法</h5>
+        <div class="col-11 mx-auto">
+        <%= f.radio_button :pay_method, :A, checked: true %>
+        <%= f.label :pay_method_A, "クレジットカード" %>
+        <br>
+        <%= f.radio_button :pay_method, :B %>
+        <%= f.label :pay_method_B, "銀行振込" %>
+        </div>
+        <h5 class="font-weight-bold">お届け先</h5>
+        <div class="col-11 mx-auto">
+        <%= f.radio_button :addresses, :address_mine %>
+        <%= f.label :addresses_address_mine, "ご自身の住所" %>
+        <div class="col-11 mx-auto">
+            <p><%= @customer.postal_code %>　<%= @customer.address %><br>
+            <%= @customer.last_name %><%= @customer.first_name %></p>
+        </div>
+        <% if @addresses.count >= 1 %>
+        <%= f.radio_button :addresses, :address_list %>
+        <%= f.label :addresses_address_list, "登録した住所" %>
+        <div class="col-11 mx-auto">
+            <%= f.collection_select :address_id,  @addresses, :id, :view_all %>
+        </div>
+        <% end %>
+        <%= f.radio_button :addresses, :address_new %>
+        <%= f.label :addresses_address_new, "新しい住所" %>
+        <div class="col-11 mx-auto">
+            <p>郵便番号（ハイフンなし）　<%= f.text_field :postal_code, class: "form-control col-3 d-inline" %></p>
+            <p>住所　　　　　　　　　　　<%= f.text_field :address, class: "form-control col-7 d-inline" %></p>
+            <p>宛名　　　　　　　　　　　<%= f.text_field :name, class: "form-control col-3 d-inline" %></p>
+        </div>
+        </div>
+        <div class="text-center">
+            <%= f.hidden_field :shipping_cost, :value => 800 %>
+            <%= f.submit '確認画面に進む',class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</div>
