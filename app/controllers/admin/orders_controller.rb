@@ -6,13 +6,19 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
+    @order.update(orders_params)
+    @order_detail = @order.order_details
+    if @order.status == "入金確認"
+    @order_detail.update(making_status: "製作待ち")
     redirect_to request.referer
+    else
+    redirect_to request.referer
+    end
   end
 
   private
 
-  def order_params
-    params.require(:order).permit(:status)
+  def orders_params
+    params.require(:order).permit(:status,:customer_id)
   end
 end
