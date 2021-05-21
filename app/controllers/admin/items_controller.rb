@@ -11,11 +11,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    if Item.create(item_params)
-      flash[:notice] = "success"
-      redirect_to admin_items_path
+    item = Item.new(item_params)
+    if item.save
+      redirect_to admin_item_path(item)
     else
-      flash[:notice] = "エラーが発生しました"
       redirect_to new_admin_item_path
     end
   end
