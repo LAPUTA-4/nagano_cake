@@ -1,51 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-     <div class="top-image">
-      <div class="top-image-text">
-       <p>ようこそ、ながのCAKEへ！</p>
-       <p>このサイトは、ケーキ販売のECサイトになります。</p>
-       <p>会員でない方も商品の閲覧はできますが、</p>
-       <p>購入には会員登録が必要になります。</p>
-     </div> <!-- top-image-text -->
-    </div> <!-- top-image -->
-  </div> <!-- col-12 -->
- </div> <!-- row -->
+<div class="col-12">
+ <div class="top-image">
+  <div class="top-image-text">
+   <p>ようこそ、ながのCAKEへ！</p>
+   <p>このサイトは、ケーキ販売のECサイトになります。</p>
+   <p>会員でない方も商品の閲覧はできますが、</p>
+   <p>購入には会員登録が必要になります。</p>
+  </div> 
  </div>
- 
-<div class="container">
- <div class="row">
-   <div class="col-12">
-     <div class="top-items">
-      <br>
-      <h1>　　新着商品</h1><br>
-      <div class="d-flex justify-content-around">
-       <div>
-        <%= image_tag 'candy_2.jpeg' ,size: '100x100' %>
-        <h4>商品名</h4>
-        <p>￥300</p>
-       </div>
-       <div>
-        <%= image_tag 'candy_2.jpeg' ,size: '100x100' %>
-        <h4>商品名</h4>
-        <p>￥300</p>
-       </div>
-       <div>
-        <%= image_tag 'candy_2.jpeg' ,size: '100x100' %>
-        <h4>商品名</h4>
-        <p>￥300</p>
-       </div>
-       <div>
-        <%= image_tag 'candy_2.jpeg' ,size: '100x100' %>
-        <h4>商品名</h4>
-        <p>￥300</p>
-       </div>
-      </div>
-      <div class="d-flex flex-row-reverse">
-       <%= link_to "全ての商品を見る＞　　", admin_items_path, class: "nav-link" %>
-      </div>
-    </div>
-   </div>
-  </div><!--row -->
-</div> <!-- container -->
+</div>
+<div class="col-12 mt-5">
+<h1>新着商品</h1>
+</div>
+<div class="row mt-4">
+<% @new_items.each do |item| %>
+ <div class="col-sm-3">
+  <%= link_to item_path(item) do %>
+   <%= attachment_image_tag item, :image, :fill, 150, 150, format: 'jpeg' %>
+  <% end %>
+ </div>
+<% end %>
+<% @new_items.each do |item| %>
+ <div class="col-sm-3">
+  <h5><%= item.name %></h5>
+ </div>
+<% end %>
+<% @new_items.each do |item| %>
+ <div class="col-sm-3">
+  <p>￥<%= item.price %></p>
+ </div>
+<% end %>
+</div>    
+<div class="col-sm-3 offset-md-9">
+<%= link_to "全ての商品を見る　＞", admin_items_path, class: "nav-link" %>
 </div>
