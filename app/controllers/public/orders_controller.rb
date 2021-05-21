@@ -53,7 +53,7 @@ class Public::OrdersController < ApplicationController
             making_status: 0
           )
           @order_detail.save
-        end
+      end
         @cartitems.destroy_all
         redirect_to complete_orders_path
       else
