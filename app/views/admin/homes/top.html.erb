@@ -21,16 +21,20 @@
                 <%= order.customer.last_name%>
                 <%= order.customer.first_name%>
             </td>
-            <td class="text-left">
-              <%= %>
+            <td>
+            <% order.order_details.each do |order_detail| %>
+              <%= order_detail.amount %>
+            <% end %>
             </td>
-            <td class="col-xs-2">
-              <%=%>
+                    
+            <td class="text-left">
+              <%= order.status %>
             </td>
           </tr>
           <% end %>
       </tbody>
+      
     </table>
   </div>
-    <div class= "text-center"><%= paginate (@orders) %></div>
+    
 </div>
