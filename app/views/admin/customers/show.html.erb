@@ -47,9 +47,10 @@
   </tbody>
 </table>
 
-      <div class="actions">
-        <%= link_to "編集する",edit_admin_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success edit_shipping_addres_#{@customer.id}" %>
-      </div>
-      
-       <%= link_to "注文履歴一覧を見る", admin_root_path(@customer) %>
+  <div class="customer-edit d-flex w-50 justify-content-center my-4">
+    <div class="customer-link"><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success mx-4" %></div>
+    <%= form_with url: admin_root_path,method: :get, local:true do |f| %>
+    <%= f.hidden_field :customer_id,:value => @customer.id %>
+      <div class="submit"><%= f.submit '注文一覧',class: "btn btn-primary mx-4" %></div>
+    <% end %>
   </div>
