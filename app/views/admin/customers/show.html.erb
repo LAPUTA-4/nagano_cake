@@ -49,5 +49,6 @@
 
       <div class="actions">
         <%= link_to "編集する",edit_admin_customer_path(@customer), class: "glyphicon glyphicon-pencil btn btn-success edit_shipping_addres_#{@customer.id}" %>
+        <%= link_to "注文履歴一覧", admin_root_path(order_sort: 0), class: "glyphicon glyphicon-pencil btn btn-success"  %>
       </div>
   </div>
