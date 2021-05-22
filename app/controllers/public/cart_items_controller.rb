@@ -2,9 +2,13 @@ class Public::CartItemsController < ApplicationController
   def index
      @customer = Customer.find_by(id: current_customer.id)
      @cart_items = @customer.cart_items.all
-     @cart_items.each do |n|
-      count = n.item.price * n.amount * 1.1
-      @sum = count + @sum.to_i
+      @cart_items.each do |n|
+      unless n.amount == nil
+       count = n.item.price * n.amount * 1.1
+       @sum = count + @sum.to_i
+      else
+       @sum = 0
+      end
      end
      #カートを空にしたとき、@sumにはnilが入っているのでViewファイルでfloorメソッドが働かずにエラーになるので、
      #@sumに0を代入してあげる
