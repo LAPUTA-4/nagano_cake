@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-#only等は未着手resourcesで大体のアクションができるか確認
 #deviseの設定
-#devise_for :admins, path: 'admin', controllers: {
-#    sessions: 'admin/sessions'
-#  }
 devise_for :admins, skip: :all
 devise_scope :admin do
     get '/admin/sign_in' => 'admin/sessions#new', as: :new_admin_session
