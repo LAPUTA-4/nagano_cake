@@ -22,19 +22,20 @@
                 <%= order.customer.first_name%>
             </td>
             <td>
+            <% @cart_amount_sum = 0 %>
             <% order.order_details.each do |order_detail| %>
-              <%= order_detail.amount %>
+              <% @cart_amount_sum += order_detail.amount %>
             <% end %>
+            <%= @cart_amount_sum %>
             </td>
-                    
             <td class="text-left">
               <%= order.status %>
             </td>
           </tr>
           <% end %>
       </tbody>
-      
+
     </table>
   </div>
-    
+
 </div>
