@@ -1,56 +1,71 @@
+<div class="container mt-5">
 
-<h4>
-    <%=  @customer.last_name  %><%=  @customer.first_name  %>さんの会員詳細
-  </h4>
-    <table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="row">会員ID</th>
-      <td> <%= @customer.id %> </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">氏名</th>
-      <td><%=  @customer.last_name %> <%=  @customer.first_name %></td>
-    </tr>
-    <tr>
-      <th scope="row">フリガナ </th>
-      <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana%> </td>
-    </tr>
-    <tr>
-      <th scope="row">郵便番号</th>
-      <td> <%= @customer.postal_code %> </td>
-    </tr>
-    <tr>
-      <th scope="row">住所</th>
-      <td> <%= @customer.address %> </td>
-    </tr>
-    <tr>
-      <th scope="row">電話番号</th>
-      <td><%= @customer.telephone_number %> </td>
-    </tr>
-    <tr>
-      <th scope="row">メールアドレス </th>
-      <td><%= @customer.email%> </td>
-    </tr>
-    <tr>
-      <th scope="row">会員ステータス</th>
-      <td>
-      <% if @customer.is_deleted == true%>
-        <font color="lightgray">退会済</font>
-      <% else %>
-        <font color="lawngreen">有効</font>
-      <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <h4><%=  @customer.last_name  %><%=  @customer.first_name  %>さんの会員詳細</h4>
 
-  <div class="customer-edit d-flex w-50 justify-content-center my-4">
-    <div class="customer-link"><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success mx-4" %></div>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <td> <%= @customer.id %> </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th>氏名</th>
+        <td><%=  @customer.last_name %> <%=  @customer.first_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ </th>
+        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana%> </td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td> <%= @customer.postal_code %> </td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td> <%= @customer.address %> </td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer.telephone_number %> </td>
+      </tr>
+      <tr>
+        <th>メールアドレス </th>
+        <td><%= @customer.email%> </td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <td>
+        <% if @customer.is_deleted == true%>
+          <font color="lightgray">退会済</font>
+        <% else %>
+          <font color="lawngreen">有効</font>
+        <% end %>
+        </td>
+      </tr>
+    </tbody>
+
+
+  </table>
+
+
+  <div class="row">
+
+    <div class="col col-sm-4 col-xl-2">
+    <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success mx-1" %>
+    </div>
+
     <%= form_with url: admin_root_path,method: :get, local:true do |f| %>
     <%= f.hidden_field :customer_id,:value => @customer.id %>
-      <div class="submit"><%= f.submit '注文一覧',class: "btn btn-primary mx-4" %></div>
+    <div class="col col-sm-4 col-xl-2">
+    <%= f.submit '注文一覧', class: "btn btn-primary mx-1" %>
+    </div>
     <% end %>
-  </div>
+
+    </div>
+
+
+
+</div>
