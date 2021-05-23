@@ -2,20 +2,29 @@
   <h3>ログイン</h3><br>
   <h5>会員の方はこちらからログイン</h5><br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <table class="table">
-        <tr>
-          <th class="text-center">メールアドレス</th>
-          <th colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-75 form-control" %></th>
-        </tr>
-        <tr>
-          <th class="text-center">パスワード</th>
-          <th colspan="2"><%= f.password_field :password, autocomplete: "current-password", class: "w-75 form-control" %></th>
-        </tr>
-        <tr>
-          <th></th>
-          <th><%= f.submit "ログイン", class: "btn btn-primary w-50"  %></th>
-        </tr>
-      </table>
+      <div class="row py-1 my-1 border-bottom"> 
+        <div class="col-12 col-sm-4 my-1 text-sm-center text-left">
+          <label class="font-weight-bold m-1">メールアドレス</label>
+        </div>
+        <div class="col my-1">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-100 form-control" %>
+        </div>
+      </div>
+      <div class="row py-1 my-1 border-bottom"> 
+        <div class="col-12 col-sm-4 my-1 text-sm-center text-left">
+          <label class="font-weight-bold m-1">パスワード</label>
+        </div>
+        <div class="col my-1">
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-100 form-control" %>
+        </div>
+      </div>
+      <div class="row py-1 mt-1 mb-5">
+        <div class="col-12 col-sm-4"></div>
+        <div class="col my-1">
+          <%= f.submit "新規登録", class: "btn btn-primary w-100" %>
+        </div>
+        <div class="col-12 col-sm-4 my-1"></div>
+      </div>
     <% end %>
   <h5>会員登録がお済でない方</h5><br>
   <%= link_to "こちら", new_customer_registration_path %>から新規登録をおこなってください
