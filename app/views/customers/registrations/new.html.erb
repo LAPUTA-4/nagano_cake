@@ -45,7 +45,7 @@
         <label class="font-weight-bold m-1">住所</label>
       </div>
       <div class="col my-1">
-        <%= f.text_field :address, class: "form-control d-inline w-75" %>
+        <%= f.text_field :address, placeholder: "長野県松本市333", class: "form-control d-inline w-75" %>
       </div>
     </div>
     <div class="row py-1 my-1 border-bottom"> 
@@ -53,7 +53,7 @@
         <label class="font-weight-bold m-1">電話番号（ハイフンなし）</label>
       </div>
       <div class="col my-1">
-        <%= f.text_field :telephone_number, class: "form-control d-inline w-50" %>
+        <%= f.text_field :telephone_number, placeholder: "09099998888", class: "form-control d-inline w-50" %>
       </div>
     </div>
     <div class="row py-1 my-1 border-bottom"> 
@@ -77,12 +77,14 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-50" %>
       </div>
     </div>
-    <div class="row py-1 mt-1 mb-5"> 
+    <div class="row py-1 mt-1 mb-5">
+      <div class="col-12 col-sm-4"></div>
       <div class="col my-1">
-        <%= f.submit "新規登録", class: "btn btn-success w-50" %>
+        <%= f.submit "新規登録", class: "btn btn-success w-100" %>
       </div>
+      <div class="col-12 col-sm-4 my-1"></div>
     </div>
     <% end %>
   <h4>既にご登録済みの方</h4><br>
-      <%= link_to "こちら", new_customer_session_path %>からログインしてください。
+  <%= link_to "こちら", new_customer_session_path %>からログインしてください。
 </div>
