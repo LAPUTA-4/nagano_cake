@@ -1,40 +1,67 @@
 <div class="col-10 mx-auto">
   <h3>会員情報編集</h3><br>
     <%= form_with model: @customer, url: customers_update_path, local: true do |f| %>
-      <table class="table">
-        <tr>
-          <th>名前</th>
-          <th>　（姓）<%= f.text_field :last_name, autofocus: true, placeholder: "姓", class: "form-control d-inline w-75" %></th>
-          <th>　（名）<%= f.text_field :first_name, placeholder: "名", class: "form-control d-inline w-75" %></th>
-        </tr>
-        <tr>
-          <th>フリガナ</th>
-          <th>（セイ）<%= f.text_field :last_name_kana, placeholder: "セイ", class: "form-control d-inline w-75" %></th>
-          <th>（メイ）<%= f.text_field :first_name_kana, placeholder: "メイ", class: "form-control d-inline w-75" %></th>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <th>　　　　<%= f.email_field :email, autocomplete: "email", class: "form-control d-inline w-75" %></th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>郵便番号(ハイフンなし)</th>
-          <th>　　　　<%= f.text_field :postal_code, class: "form-control d-inline w-75" %></th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <th colspan="2">　　　　<%= f.text_field :address, class: "form-control d-inline w-75" %></th>
-        </tr>
-        <tr>
-          <th>電話番号（ハイフンなし）</th>
-          <th>　　　　<%= f.text_field :telephone_number, class: "form-control d-inline w-75" %></th>
-          <th></th>
-        </tr>
-        <tr>
-          <th></th>
-          <th>　　　　<%= f.submit "編集内容を保存", class: "btn btn-success w-75" %></th>
-          <th class="text-right"><%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger w-50' %></th>
-        </tr>
-      </table>
-<% end %>
+    <div class="row py-1 my-1 border-bottom">
+      <div class="col-12 col-sm-4 my-1">
+        <label class="font-weight-bold m-1">名前</label>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :last_name, autofocus: true, placeholder: "姓", class: "form-control" %>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :first_name, placeholder: "名", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row py-1 my-1 border-bottom">
+      <div class="col-12 col-sm-4 my-1">
+        <label class="font-weight-bold m-1">フリガナ</label>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :last_name_kana, placeholder: "セイ", class: "form-control" %>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :first_name_kana, placeholder: "メイ", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row py-1 my-1 border-bottom"> 
+      <div class="col-12 col-sm-4 my-1">
+        <label class="font-weight-bold m-1">メールアドレス</label>
+      </div>
+      <div class="col my-1">
+        <%= f.email_field :email, autocomplete: "email", placeholder: "musuka@laputa4.com", class: "form-control w-75" %>
+      </div>
+    </div>
+    <div class="row py-1 my-1 border-bottom"> 
+      <div class="col-12 col-sm-4 my-1">
+        <label class="font-weight-bold m-1">郵便番号(ハイフンなし)</label>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :postal_code, placeholder: "1112222", class: "form-control w-50" %>
+      </div>
+    </div>
+    <div class="row py-1 my-1 border-bottom"> 
+      <div class="col-12 col-sm-4 my-1">
+        <label class="font-weight-bold m-1">住所</label>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :address, placeholder: "長野県松本市333", class: "form-control d-inline w-75" %>
+      </div>
+    </div>
+    <div class="row py-1 my-1 border-bottom"> 
+      <div class="col-12 col-sm-4 my-1">
+        <label class="font-weight-bold m-1">電話番号（ハイフンなし）</label>
+      </div>
+      <div class="col my-1">
+        <%= f.text_field :telephone_number, placeholder: "09099998888", class: "form-control d-inline w-50" %>
+      </div>
+    </div>
+    <div class="row py-1 mt-1">
+      <div class="col-12 col-sm-4"></div>
+      <div class="col my-1">
+        <%= f.submit "編集内容を保存", class: "btn btn-success w-100" %>
+      </div>
+      <div class="col my-1 mb-5">
+        <%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger w-100' %>
+      </div>
+    </div>
+    <% end %>
