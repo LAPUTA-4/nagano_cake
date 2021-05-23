@@ -10,8 +10,10 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light mx-4">
-        <%= link_to "ながのCAKE", root_path, class: "navbar-brand" %>
+      <nav class="navbar navbar-expand-lg navbar-light mx-4", style="background-color: #eddcbc;">
+        <%= link_to root_path do %>
+         <%= image_tag 'logo.jpeg' ,size: '110x90' %>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
