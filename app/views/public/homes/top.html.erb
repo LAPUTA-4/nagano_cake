@@ -13,19 +13,19 @@
 </div>
 <div class="row mt-4">
 <% @new_items.each do |item| %>
- <div class="col-sm-3">
+ <div class="col-3">
   <%= link_to item_path(item) do %>
    <%= attachment_image_tag item, :image, :fill, 150, 150, format: 'jpeg' %>
   <% end %>
  </div>
 <% end %>
 <% @new_items.each do |item| %>
- <div class="col-sm-3">
+ <div class="col-3">
   <h5><%= item.name %></h5>
  </div>
 <% end %>
 <% @new_items.each do |item| %>
- <div class="col-sm-3">
+ <div class="col-3">
   <p>￥<%= item.price %></p>
  </div>
 <% end %>
