@@ -1,10 +1,10 @@
 <div class="col-11 col-sm-10 mx-auto">
     <h3>マイページ</h3><br>
     <div class="mb-3 d-flex align-items-center">
-    <h5 class="mr-3 font-weight-bold">登録情報　</h5>
-    <%= link_to "編集する", customers_edit_path, class: "btn btn-success font-weight-bold" %>
+    <h5 class="mr-5 font-weight-bold">登録情報　</h5>
+    <%= link_to "編集する", customers_edit_path, class: "btn btn-success font-weight-bold col col-sm-2" %>
     </div>
-    <div class="row py-1 my-1 border-bottom"> 
+    <div class="row col-sm-8 py-1 my-1 border-bottom"> 
         <div class="col-12 col-sm-4 my-1">
             <label class="font-weight-bold m-1">氏名</label>
         </div>
@@ -12,7 +12,7 @@
             <%= @customer.last_name + "　" + @customer.first_name %>
         </div>
     </div>
-    <div class="row py-1 my-1 border-bottom"> 
+    <div class="row col-sm-8 py-1 my-1 border-bottom"> 
         <div class="col-12 col-sm-4 my-1">
             <label class="font-weight-bold m-1">カナ</label>
         </div>
@@ -20,7 +20,7 @@
             <%= @customer.last_name_kana + "　" + @customer.first_name_kana %>
         </div>
     </div>
-    <div class="row py-1 my-1 border-bottom"> 
+    <div class="row col-sm-8 py-1 my-1 border-bottom"> 
         <div class="col-12 col-sm-4 my-1">
             <label class="font-weight-bold m-1">郵便番号</label>
         </div>
@@ -28,7 +28,7 @@
             <%= @customer.postal_code %>
         </div>
     </div>
-    <div class="row py-1 my-1 border-bottom"> 
+    <div class="row col-sm-8 py-1 my-1 border-bottom"> 
         <div class="col-12 col-sm-4 my-1">
             <label class="font-weight-bold m-1">住所</label>
         </div>
@@ -36,7 +36,7 @@
             <%= @customer.address %>
         </div>
     </div>
-    <div class="row py-1 my-1 border-bottom"> 
+    <div class="row col-sm-8 py-1 my-1 border-bottom"> 
         <div class="col-12 col-sm-4 my-1">
             <label class="font-weight-bold m-1">電話番号</label>
         </div>
@@ -44,7 +44,7 @@
             <%= @customer.telephone_number %>
         </div>
     </div>
-    <div class="row py-1 my-1 border-bottom mb-5"> 
+    <div class="row col-sm-8 py-1 my-1 border-bottom mb-5"> 
         <div class="col-12 col-sm-4 my-1">
             <label class="font-weight-bold m-1">メールアドレス</label>
         </div>
@@ -53,9 +53,9 @@
         </div>
     </div>
     <div class="mb-3 d-flex align-items-center"> 
-        <h5 class="mr-3 font-weight-bold">配送先　　</h5><%= link_to "配送先一覧", addresses_path, class: "btn btn-primary font-weight-bold" %>
+        <h5 class="mr-5 font-weight-bold">配送先　　</h5><%= link_to "配送先一覧", addresses_path, class: "btn btn-primary font-weight-bold col col-sm-2" %>
     </div>
     <div class="mb-3 d-flex align-items-center">
-        <h5 class="mr-3 font-weight-bold">注文履歴　</h5><%= link_to "注文履歴一覧", orders_path,class: "btn btn-primary font-weight-bold" %>
+        <h5 class="mr-5 font-weight-bold">注文履歴　</h5><%= link_to "注文履歴一覧", orders_path,class: "btn btn-primary font-weight-bold col col-sm-2" %>
     </div>
 </div>
