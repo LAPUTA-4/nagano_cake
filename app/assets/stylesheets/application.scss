@@ -17,6 +17,7 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300&display=swap');
 
 //* ================ リセットCSS ============================
 
@@ -32,15 +33,10 @@
    background-image: url(top.jpg);
    background-size: cover;
    background-position: 40% 70%;
-   height: 110%;
+   height: 18rem;
    width: 100%;
 }
 
-.top-image-text {
-    margin: 0 auto;
-    width: 50%;
-    height: 80%;
-    padding-top: 5%;
-    font-size: 150%;
-    color: white;
+.GoogleFonts {
+  font-family: 'Cormorant', serif;
 }
