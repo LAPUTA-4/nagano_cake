@@ -1,65 +1,71 @@
-<div class="col-10">
-    <div class="d-flex flex-warp justify-content-start">
-        <div class="mx-1">
+<div class="row col-10 mx-auto">
+    <div class="col-12 col-md-6 mb-3">
         <h5>注文情報</h5>
-        <table class="table table-bordered">
-            <tr>
-                <th class="table-active">注文日</th>
-                <th><%= @order.created_at %></th>
-            </tr>
-            <tr>
-                <th class="table-active">配送先</th>
-                <th>〒<%= @order.postal_code %> <%= @order.address %></br><%= @order.name %></th>
-            </tr>
-            <tr>
-                <th class="table-active">支払い方法</th>
-                <th><%= @order.payment_method %></th>
-            </tr>
-            <tr>
-                <th class="table-active">ステータス</th>
-                <th><%= @order.status %></th>
-            </tr>
-        </table>
-    </div> 
-    <div class="mx-1">
+        <div class="row border"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">注文日</div>
+            </div>
+            <div class="col py-2"><%= @order.created_at %></div>
+        </div>
+        <div class="row border border-top-0"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">配送先</div>
+            </div>
+            <div class="col py-2">
+                〒<%= @order.postal_code %> <%= @order.address %></br>
+                <%= @order.name %>
+            </div>
+        </div>
+        <div class="row border border-top-0"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">支払い方法</div>
+            </div>
+            <div class="col py-2"><%= @order.payment_method %></div>
+        </div>
+        <div class="row border border-top-0"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">ステータス</div>
+            </div>
+            <div class="col py-2"><%= @order.status %></div>
+        </div>
+    </div>
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-5 mb-3">
         <h5>請求情報</h5>
-        <table class="table table-bordered">
-            <tr>
-                <th class="table-active">商品合計</th>
-                <th><%= (@order.total_payment - @order.shipping_cost).floor.to_s(:delimited) %></th>
-            </tr>
-            <tr>
-                <th class="table-active">配送料</th>
-                <th><%= @order.shipping_cost.floor.to_s(:delimited) %></th>
-            </tr>
-            <tr>
-                <th class="table-active">ご請求額</th>
-                <th><%= @order.total_payment.floor.to_s(:delimited) %></th>
-            </tr>
-        </table>
+        <div class="row border"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">商品合計</div>
+            </div>
+            <div class="col py-2"><%= (@order.total_payment - @order.shipping_cost).floor.to_s(:delimited) %></div>
+        </div>
+        <div class="row border border-top-0"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">配送料</div>
+            </div>
+            <div class="col py-2"><%= @order.shipping_cost.floor.to_s(:delimited) %></div>
+        </div>
+        <div class="row border border-top-0"> 
+            <div class="col-12 col-sm-4 bg-light align-items-center">
+                <div class="font-weight-bold py-2">ご請求額</div>
+            </div>
+            <div class="col py-2"><%= @order.total_payment.floor.to_s(:delimited) %></div>
+        </div>
     </div>
-    </div>
-    <div class="mx-1">
-        <h5>注文内容</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>商品</th>
-                    <th>単価(税込)</th>
-                    <th>個数</th>
-                    <th>小計</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @order.order_details.each do |order_detail| %>
-                  <tr>
-                      <th><%= order_detail.item.name %></th>
-                      <th><%= (order_detail.item.price * 1.1).floor.to_s(:delimited) %></th>
-                      <th><%= order_detail.amount %></th>
-                      <th><%= ((order_detail.item.price * 1.1) * order_detail.amount).floor.to_s(:delimited) %></th>
-                  </tr>
-                <% end %>
-            </tbody>
-        </table>
+    <div class="col-12 mb-3">
+      <h5>注文履歴一覧</h5>
+      <div class="row flex-nowrap bg-light align-items-center border">
+        <div class="col">商品</div>
+        <div class="col">単価(税込)</div>
+        <div class="col">個数</div>
+        <div class="col">小計</div>
+      </div>
+      <% @order.order_details.each do |order_detail| %>
+        <div class="row flex-nowrap align-items-center border py-1">
+          <div class="col"><%= order_detail.item.name %></div>
+          <div class="col"><%= (order_detail.item.price * 1.1).floor.to_s(:delimited) %></div>
+          <div class="col"><%= order_detail.amount %></div>
+          <div class="col"><%= ((order_detail.item.price * 1.1) * order_detail.amount).floor.to_s(:delimited) %></div>
+        </div>
+      <% end %>
     </div>
 </div>
