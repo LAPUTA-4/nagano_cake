@@ -1,7 +1,7 @@
 <div class="col-11 col-sm-10 mx-auto">
     <h3>マイページ</h3><br>
     <div class="mb-3 d-flex align-items-center">
-    <h4 class="mr-3">登録情報　</h4>
+    <h5 class="mr-3 font-weight-bold">登録情報　</h5>
     <%= link_to "編集する", customers_edit_path, class: "btn btn-success font-weight-bold" %>
     </div>
     <div class="row py-1 my-1 border-bottom"> 
@@ -53,9 +53,9 @@
         </div>
     </div>
     <div class="mb-3 d-flex align-items-center"> 
-        <h4 class="mr-3">配送先　　</h4><%= link_to "配送先一覧", addresses_path, class: "btn btn-primary font-weight-bold" %>
+        <h5 class="mr-3 font-weight-bold">配送先　　</h5><%= link_to "配送先一覧", addresses_path, class: "btn btn-primary font-weight-bold" %>
     </div>
     <div class="mb-3 d-flex align-items-center">
-        <h4 class="mr-3">注文履歴　</h4><%= link_to "注文履歴一覧", orders_path,class: "btn btn-primary font-weight-bold" %>
+        <h5 class="mr-3 font-weight-bold">注文履歴　</h5><%= link_to "注文履歴一覧", orders_path,class: "btn btn-primary font-weight-bold" %>
     </div>
 </div>
