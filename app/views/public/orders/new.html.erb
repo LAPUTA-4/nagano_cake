@@ -1,8 +1,8 @@
-<div class="col-10 mx-auto">
-    <h4 class="font-weight-bold">注文情報入力</h4>
+<div class="col-11 col-sm-10 mx-auto">
+    <h4 class="font-weight-bold mb-3">注文情報入力</h4>
     <%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
         <h5 class="font-weight-bold">支払い方法</h5>
-        <div class="col-11 mx-auto">
+        <div class="col-11 mx-auto mb-3">
         <%= f.radio_button :pay_method, :A, checked: true %>
         <%= f.label :pay_method_A, "クレジットカード" %>
         <br>
@@ -20,16 +20,16 @@
         <% if @addresses.count >= 1 %>
         <%= f.radio_button :addresses, :address_list %>
         <%= f.label :addresses_address_list, "登録した住所" %>
-        <div class="col-11 mx-auto">
+        <div class="col-11 mx-auto mb-3">
             <%= f.collection_select :address_id,  @addresses, :id, :view_all %>
         </div>
         <% end %>
         <%= f.radio_button :addresses, :address_new %>
         <%= f.label :addresses_address_new, "新しい住所" %>
-        <div class="col-11 mx-auto">
-            <p>郵便番号（ハイフンなし）　<%= f.text_field :postal_code, class: "form-control col-3 d-inline" %></p>
-            <p>住所　　　　　　　　　　　<%= f.text_field :address, class: "form-control col-7 d-inline" %></p>
-            <p>宛名　　　　　　　　　　　<%= f.text_field :name, class: "form-control col-3 d-inline" %></p>
+        <div class="col-11 mx-auto mb-3">
+            <p>郵便番号（ハイフンなし）　<%= f.text_field :postal_code, class: "form-control col col-lg-3 d-inline" %></p>
+            <p>住所　　　　　　　　　　　<%= f.text_field :address, class: "form-control col col-lg-7 d-inline" %></p>
+            <p>宛名　　　　　　　　　　　<%= f.text_field :name, class: "form-control col col-lg-3 d-inline" %></p>
         </div>
         </div>
         <div class="text-center">
