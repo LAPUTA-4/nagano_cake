@@ -42,10 +42,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    if @cart_item = CartItem.create(cart_item_params)
+    @cart_item = CartItem.create(cart_item_params)
+    if @cart_item.save
       redirect_to cart_items_path
     else
-      redirect_to request.referer
+      redirect_to item_path(params[:cart_item][:item_id]), flash: { error: @cart_item.errors.full_messages }
     end
   end
   
