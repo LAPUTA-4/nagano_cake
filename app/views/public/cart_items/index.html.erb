@@ -40,7 +40,7 @@
             <td class="text-left align-middle d-none d-md-table-cell">
             <% unless item.amount == nil %>
              <% num_tax = item.item.price * item.amount * 1.1 %>
-             <%= num_tax.floor %>
+             <%= num_tax.floor.to_s(:delimited) %>
             <% else %>
              <% @alert = "注文数確認後、変更ボタンをクリック" %>
              <p><%= @alert %></p>
@@ -66,7 +66,7 @@
            <% if @sum == 0 || @alert == "注文数確認後、変更ボタンをクリック" %>
             <p></p>
            <% else %>
-            <%= @sum.floor %>
+            <%= @sum.floor.to_s(:delimited) %>
            <% end %>
           </td>
         </tr>
