@@ -1,48 +1,43 @@
-<style>td.text-left{ vertical-align:middle; }</style>
-<h2 class="text-center">注文履歴一覧</h2>
-<div class="container">
-<div class="row">
-    <table class="table border">
-      <thead class="thead-light">
-        <tr>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払金額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td class="text-left">
-              <%= order.created_at.strftime('%m/%d') %>
-            </td>
-            <td class="text-left">
-                〒<%= order.postal_code %><br>
-                <%= order.address %><br>
-                <%= order.name %>
-            </td>
-            <td class="text-left">
-                <% order.order_details.each do |order_detail| %>
-                  <%= order_detail.item.name %><br>
-                <% end %>
-            </td>
-            <td class="text-left">
-              <%= order.total_payment.to_s(:delimited) %>
-            </td>
-            <td class="text-left">
-              <%= order.status %>
-            </td>
-            <td class="text-left">
-              <%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="col-12">
+  <h2>注文履歴一覧</h2>
+  <div class="row flex-nowrap bg-light align-items-center border">
+    <div class="col-2 col-lg-1">
+      <span class="d-none d-sm-inline">注文日</span>
+      <span class="d-iniline d-sm-none">日時</span>
+    </div>
+    <div class="col d-none d-sm-block">配送先</div>
+    <div class="col d-none d-sm-block">注文商品</div>
+    <div class="col"><span class="d-none d-sm-inline">支払</span>金額</div>
+    <div class="col">
+      <span class="d-none d-sm-inline">ステータス</span>
+      <span class="d-iniline d-sm-none">状況</span>
+    </div>
+    <div class="col"><span class="d-none d-sm-inline">注文</span>詳細</div>
   </div>
+  <% @orders.each do |order| %>
+    <div class="row flex-nowrap align-items-center border py-1">
+      <div class="col-2 col-lg-1"><%= order.created_at.strftime('%m/%d') %></div>
+      <div class="col d-none d-sm-block">
+        〒<%= order.postal_code %><br>
+        <%= order.address %><br>
+        <%= order.name %>
+      </div>
+      <div class="col d-none d-sm-block">
+        <% order.order_details.each do |order_detail| %>
+          <%= order_detail.item.name %><br>
+        <% end %>
+      </div>
+      <div class="col"><%= order.total_payment.to_s(:delimited) %></div>
+      <div class="col"><%= order.status %></div>
+      <div class="col">
+        <span class="d-none d-sm-inline">
+          <%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
+        </span>
+        <span class="d-inline d-sm-none">
+          <%= link_to "表示", order_path(order), class: "btn btn-primary" %>
+        </span>
+      </div>
+    </div>
+  <% end %>
 </div>
 
