@@ -55,14 +55,14 @@
       <h5>注文履歴一覧</h5>
       <div class="row flex-nowrap bg-light align-items-center border">
         <div class="col">商品</div>
-        <div class="col">単価(税込)</div>
+        <div class="col d-none d-sm-block">単価(税込)</div>
         <div class="col">個数</div>
         <div class="col">小計</div>
       </div>
       <% @order.order_details.each do |order_detail| %>
         <div class="row flex-nowrap align-items-center border py-1">
           <div class="col"><%= order_detail.item.name %></div>
-          <div class="col"><%= (order_detail.item.price * 1.1).floor.to_s(:delimited) %></div>
+          <div class="col d-none d-sm-block"><%= (order_detail.item.price * 1.1).floor.to_s(:delimited) %></div>
           <div class="col"><%= order_detail.amount %></div>
           <div class="col"><%= ((order_detail.item.price * 1.1) * order_detail.amount).floor.to_s(:delimited) %></div>
         </div>
