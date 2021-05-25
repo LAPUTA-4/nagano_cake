@@ -41,16 +41,16 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-lg-7 mb-3">
-      
+    <div class="col-12 col-lg-8 mb-3">
+
       <div class="row bg-light align-items-center border">
-        <div class="col">商品名</div>
-        <div class="col d-none d-sm-block">単価（税込）</div>
-        <div class="col d-none d-sm-block">数量</div>
-        <div class="col d-none d-sm-block">小計</div>
-        <div class="col">制作ステータス</div>
+        <div class="font-weight-bold col">商品名</div>
+        <div class="font-weight-bold col d-none d-sm-block">単価（税込）</div>
+        <div class="font-weight-bold col d-none d-sm-block">数量</div>
+        <div class="font-weight-bold col d-none d-sm-block">小計</div>
+        <div class="font-weight-bold col">制作ステータス</div>
       </div>
-      
+
       <% @order_details.each do |order_detail| %>
         <div class="row align-items-center border py-1">
           <div class="col"><%= order_detail.item.name %></div>
@@ -66,23 +66,23 @@
         </div>
       <% end %>
     </div>
-  
-  
-    <div class="col-12 col-lg-4 mb-3 offset-lg-1">
-     
-      <div class="row border"> 
+
+
+    <div class="col-12 col-lg-3 mb-3 offset-lg-1">
+
+      <div class="row border">
           <div class="col-12 col-sm-4 bg-light align-items-center">
               <div class="font-weight-bold py-2">商品合計</div>
           </div>
           <div class="col py-2">¥ <%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></div>
       </div>
-      <div class="row border border-top-0"> 
+      <div class="row border border-top-0">
           <div class="col-12 col-sm-4 bg-light align-items-center">
               <div class="font-weight-bold py-2">送料</div>
           </div>
           <div class="col py-2">¥ <%= @order.shipping_cost.to_s(:delimited) %></div>
       </div>
-      <div class="row border border-top-0"> 
+      <div class="row border border-top-0">
           <div class="col-12 col-sm-4 bg-light align-items-center">
               <div class="font-weight-bold py-2">請求合計金額</div>
           </div>
