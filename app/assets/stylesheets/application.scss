@@ -40,3 +40,17 @@
 .GoogleFonts {
   font-family: 'Cormorant', serif;
 }
+
+//* kaminariページャー用
+.page-item.active .page-link {
+    background-color:#EDDCBC;
+    border-color:#EDDCBC;
+}
+
+.page-link {
+    color:#EDDCBC;
+}
+
+.page-link:hover {
+    color:#bdb096;
+}
