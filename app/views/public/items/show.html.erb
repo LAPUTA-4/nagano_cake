@@ -1,18 +1,25 @@
             <div class="col-10 mx-auto">
-                <div class="d-flex justify-content-center">
-                <div class="col-5"><%= attachment_image_tag @item, :image, :fill, 320, 240, format: 'jpeg' %></div>
-                <div class=" col-5 align-self-center font-weight-bold">
+                <div class="row justify-content-center">
+                <div class="col-12 col-md-6 mb-4"><%= attachment_image_tag @item, :image, :fill, 320, 240, format: 'jpeg', class: "image-fluid col-12" %></div>
+                <div class=" col-11 col-md-6 justify-content-center align-self-center font-weight-bold">
                     <p><%= @item.name %></p>
                     </p><%= @item.introduction %></p>
                     </p>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></p>
                     <% if customer_signed_in? %>
                         <% if @item.is_active == true %>
-                            <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+                            <%= form_with model: @cart_item, method: :post, local: true do |f| %>
                                 <%= f.hidden_field :item_id, :value => @item.id %>
                                 <%= f.hidden_field :customer_id, :value => current_customer.id %>
                                 <%= f.select :amount, [*(1..10)],{ include_blank: "個数"},{ class: "col-3 custom-select"} %>
                                 <%= f.submit "カートに入れる", class: "btn btn-success" %>
+                                <% if flash[:error].present? %>
+                                    <span class="d-inline-block alert alert-warning my-3">
+                                            <% flash[:error].each do |message| %>
+                                                <span><%= message %></span>
+                                            <% end %>
+                                    </span>
                                 <% end %>
+                            <% end %>
                         <% else %>
                             <button class="btn btn-danger">売り切れ中</button>
                         <% end %>
