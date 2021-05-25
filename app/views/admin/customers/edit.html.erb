@@ -44,8 +44,9 @@
     <div class="col my-1"><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", {value: :false} %>　　　<%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会", {value: :true} %></div>
 
     <div class="col-12 col-md-6 ">
+      
     </div>
-      <div class="col my-1"><%= f.submit "変更を保存", class: "btn btn-success " %></div>
+    <div class="col my-1"><%= f.submit "変更を保存", class: "btn btn-success " %></div>
 
   </div>
   <% end %>
