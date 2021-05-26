@@ -1,47 +1,43 @@
+  <div class="col-12 text-center m-auto text-white d-none d-md-block pb-5">
+    <div class="top-image" >
+      <div class="col-6 offset-sm-3 pt-5">
+        <p class="lead">ようこそ、ながのCAKEへ！</p>
+        <p class="lead">このサイトは、ケーキ販売のECサイトになります。</p>
+        <p class="lead">会員でない方も商品の閲覧はできますが、</p>
+        <p class="lead">購入には会員登録が必要になります。</p>
+       </div>
+     </div>
+  </div>
 
-<div class="col-12 text-center m-auto text-white d-none d-md-block pb-5">
- <div class="top-image" >
-  <div class="col-6 offset-sm-3 pt-5">
-   <p class="lead">ようこそ、ながのCAKEへ！</p>
-   <p class="lead">このサイトは、ケーキ販売のECサイトになります。</p>
-   <p class="lead">会員でない方も商品の閲覧はできますが、</p>
-   <p class="lead">購入には会員登録が必要になります。</p>
-   </div>
-  </div> 
-</div>
+  <div class="col-xs-12 d-md-none d-xs-block mt-n4">
+    <div class="GoogleFonts ">
+      <h2>Welcome NaganoCake</h2>
+    </div>
+  </div>
 
-<div class="col-xs-12 d-md-none d-xs-block mt-n4">
-<div class="GoogleFonts">
-<h2>　Welcome NaganoCake</h2>
-</div>
-</div>
+  <div class="col-12 p-3 text-center">
+    <h3 class="GoogleFonts">~ New ~</h3>
+  </div>
 
-<div class="col-12 mt-5 mb-n3">
-<h4>【新着商品】</h4>
-</div>
-<div class="row mt-4 mx-4">
-<% @new_items.each do |item| %>
- <div class="col-sm-3 col-6 mb-5">
-  <%= link_to item_path(item) do %>
-   <%= attachment_image_tag item, :image, :fill, 140, 140, format: 'jpeg' %>
-  <% end %>
- </div>
-<% end %>
-<% @new_items.each do |item| %>
- <div class="col-sm-3 col-6 d-none d-md-block">
-  <h4><%= item.name %></h4>
- </div>
-<% end %>
-<% @new_items.each do |item| %>
- <div class="col-sm-3 col-6 d-none d-md-block">
-  <p class="lead">￥<%= item.price %></p>
- </div>
-<% end %>
-</div>    
-<div class="col-sm-3 offset-sm-9 d-none d-md-block">
-<%= link_to "全ての商品を見る　＞", items_path, class: "nav-link" %>
-</div>
 
-<div class="col-xs-12 d-md-none d-xs-block">
- <p class="lead">※ご購入には会員登録が必要となります</p>
-</div>
+  <div class="col-12 col-sm-12 d-flex flex-wrap justify-content-between mx-auto">
+    <% @new_items.each do |item| %>
+    <div class="col-6 col-md-3 col-lg-3 d-flex">
+      <%=link_to item_path(item.id), class: "text-decoration-none text-dark card shadow-lg m-2" do %>
+      <div class="mx-auto">
+        <div><%= attachment_image_tag item, :image, :fill, 250, 200, format: 'jpeg', class: "img-fluid" %></div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+
+
+  <div class="col-sm-3 offset-sm-9 d-none d-md-block">
+    <%= link_to "全ての商品を見る　＞", items_path, class: "nav-link" %>
+  </div>
+
+  <div class="col-xs-12 d-md-none d-xs-block m-3">
+    <p class="lead" style="font-size:x-small">※ご購入には会員登録が必要となります</p>
+  </div>
