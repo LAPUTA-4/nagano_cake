@@ -39,7 +39,7 @@ $(document).on('turbolinks:load',function() {
   });
  });
 });
-
+/*================== 商品詳細 ==================*/
 $(document).on('turbolinks:load',function() {
   $(document).ready(function () {
    var gazou = $("#zoom").attr('src');
