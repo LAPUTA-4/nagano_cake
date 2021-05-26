@@ -31,6 +31,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
+      flash[:choose] = "address_new"
     else
       redirect_to request.referer
     end
@@ -42,23 +43,36 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    @cartitems = current_customer.cart_items
-      if @cartitems.each do |cartitem|
-         @order_detail = OrderDetail.new(
-            order_id: @order.id,
-            item_id: cartitem.item.id,
-            amount: cartitem.amount,
-            price: cartitem.item.price,
-            making_status: 0
-          )
-          @order_detail.save
+    if @order.save
+      if  flash[:choose] = "address_new"
+        @address = Address.new(
+          customer_id: current_customer.id,
+          postal_code: params[:order][:postal_code],
+          address: params[:order][:address],
+          name: params[:order][:name]
+        )
+        @address.save
       end
-        @cartitems.destroy_all
-        redirect_to complete_orders_path
+      @cartitems = current_customer.cart_items
+      if @cartitems.count >= 1
+      @cartitems.each do |cartitem|
+        @order_detail = OrderDetail.new(
+              order_id: @order.id,
+              item_id: cartitem.item.id,
+              amount: cartitem.amount,
+              price: cartitem.item.price,
+              making_status: 0
+            )
+            @order_detail.save
+        end
+          @cartitems.destroy_all
+          redirect_to complete_orders_path
       else
-        render :confirm
+        redirect_to new_order_path
       end
+    else
+      redirect_to new_order_path, flash: { error: @order.errors.full_messages }
+    end
   end
 
   def index
@@ -66,7 +80,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if params[:id] = "confirm"
+      redirect_to new_order_path
+      flash[:r_error] = "エラー、こちらからもう一度やり直してください"
+    else
+      @order = Order.find(params[:id])
+    end
   end
   
   private
