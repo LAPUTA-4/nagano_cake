@@ -71,7 +71,7 @@ class Public::OrdersController < ApplicationController
         redirect_to new_order_path
       end
     else
-      redirect_to new_order_path
+      redirect_to new_order_path, flash: { error: @order.errors.full_messages }
     end
   end
 
@@ -82,7 +82,7 @@ class Public::OrdersController < ApplicationController
   def show
     if params[:id] = "confirm"
       redirect_to new_order_path
-      flash[:error] = "エラー、こちらからもう一度やり直してください"
+      flash[:r_error] = "エラー、こちらからもう一度やり直してください"
     else
       @order = Order.find(params[:id])
     end
