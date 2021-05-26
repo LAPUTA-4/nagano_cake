@@ -1,4 +1,18 @@
 <div class="col-11 col-sm-10 mx-auto">
+    <% if flash[:error].present? %>
+      <div class="alert alert-warning">
+        <div>
+          <% flash[:error].each do |message| %>
+            <div class="text-center">・<%= message %></div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if flash[:r_error].present? %>
+      <div class="alert alert-danger">
+            <div class="text-center">・<%= flash[:r_error] %></div>
+      </div>
+    <% end %>
     <h4 class="font-weight-bold mb-3">注文情報入力</h4>
     <%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
         <h5 class="font-weight-bold">支払い方法</h5>
@@ -21,7 +35,7 @@
         <%= f.radio_button :addresses, :address_list %>
         <%= f.label :addresses_address_list, "登録した住所" %>
         <div class="col-11 mx-auto mb-3">
-            <%= f.collection_select :address_id,  @addresses, :id, :view_all %>
+            <%= f.collection_select :address_id,  @addresses, :id, :view_all, {}, {class: "w-100"} %>
         </div>
         <% end %>
         <%= f.radio_button :addresses, :address_new %>
