@@ -1,5 +1,14 @@
 <div class="container">
   <div class="row mb-5">
+   <% if flash[:error].present? %>
+   <div class="col-10 mx-auto alert alert-warning">
+    <div>
+    <% flash[:error].each do |message| %>
+     <div class="text-center">・<%= message %></div>
+    <% end %>
+    </div>
+   </div>
+   <% end %>
    <div class='col-sm-12'>
     <span class="badge bg-secondary">
      <h5 class="text-center" style="color: white;">配送先登録/一覧</h5>
