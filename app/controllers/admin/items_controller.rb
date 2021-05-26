@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   protect_from_forgery #createアクションのsaveメソッドがRailsのCSRF対策のために通らなくなる。 追記するとなぜか通る？
 
   def index
