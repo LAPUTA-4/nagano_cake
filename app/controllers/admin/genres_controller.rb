@@ -5,9 +5,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new(genre_params)
-    genre.save
+    @genre = Genre.new(genre_params)
+    if @genre.save
     redirect_to request.referer
+    else
+    redirect_to request.referer, flash: { error: @genre.errors.full_messages }
+    end
   end
 
   def edit
