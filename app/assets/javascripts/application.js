@@ -39,6 +39,17 @@ $(document).on('turbolinks:load',function() {
   });
  });
 });
-
-
-
+/*================== 商品詳細 ==================*/
+$(document).on('turbolinks:load',function() {
+  $(document).ready(function () {
+   var gazou = $("#zoom").attr('src');
+   $("#zoom").attr({'data-zoom-image': gazou });
+   $("#zoom").elevateZoom({
+		  zoomType : "lens",
+		  lensShape : "round",
+		  zoomWindowWidth: 500,
+		  lensSize : 200,
+		  borderSize : 1
+	  });
+  });
+});
