@@ -78,6 +78,7 @@
 .image5 {
   background-image: url(baked_2.jpeg);
 }
+
 html,body{
     height: 100%;
 }
@@ -86,4 +87,9 @@ div#container{
     min-height: 100%;
     height: auto !important;
     height: 100%;
+
+.line {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 1px black;
+
 }
