@@ -1,5 +1,14 @@
 
 <div class="col-12 mx-auto">
+  <% if flash[:error].present? %>
+    <div class="col-10 mx-auto alert alert-warning">
+      <div>
+        <% flash[:error].each do |message| %>
+          <div class="text-center">・<%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <h3>商品新規登録</h3>
   <%= form_with model:@item, url:admin_items_path, method: :post, local: true do |f| %>
     <div class="row py-1 my-1 border-bottom">

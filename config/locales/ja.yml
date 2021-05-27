@@ -41,6 +41,7 @@ ja:
         image_id: 商品画像ID
         price: 税抜き価格
         is_active: 販売ステータス
+        genre: ジャンル
       genre:
         name: ジャンル名
       cart_item:

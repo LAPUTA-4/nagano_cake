@@ -12,11 +12,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    if item.save
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to admin_item_path(item)
     else
-      redirect_to new_admin_item_path
+      redirect_to new_admin_item_path, flash: { error: @item.errors.full_messages }
     end
   end
 
